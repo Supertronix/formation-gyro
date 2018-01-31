@@ -1,5 +1,7 @@
 package org.usfirst.frc.equipe5910.robot;
 
+import com.team5910.frc2017.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.PIDController;
@@ -108,6 +110,11 @@ public class RobotControleur extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		System.out.println("autonomousPeriodic()");
+		// tourner à l'envers
+		roueAvantGauche.set(-gyroSortiePID.getPIDOut());
+		roueAvantDroite.set(gyroSortiePID.getPIDOut());
+	    roueArriereGauche.set(-gyroSortiePID.getPIDOut());
+		roueArriereDroite.set(gyroSortiePID.getPIDOut());
 	}
 
 	/**
@@ -125,6 +132,11 @@ public class RobotControleur extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		System.out.println("teleopPeriodic()");
+		// tourner à l'endroit
+		roueAvantGauche.set(gyroSortiePID.getPIDOut());
+		roueAvantDroite.set(-gyroSortiePID.getPIDOut());
+	    roueArriereGauche.set(gyroSortiePID.getPIDOut());
+		roueArriereDroite.set(-gyroSortiePID.getPIDOut());
 	}
 
 	/**
